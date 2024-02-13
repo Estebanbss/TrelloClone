@@ -26,14 +26,14 @@ public class LoginController: ControllerBase
      }
 
      [HttpPost("authenticate")]
-     public async Task<IActionResult> Login(AdminDto adminDto)
+     public async Task<IActionResult> Login(LoginDto loginDto)
      {
-          var admin = await loginService.GetAdmin(adminDto);
+          var user = await loginService.GetUser(loginDto);
 
-          if(admin is null)
+          if(user is null)
                return BadRequest(new {message="Invalid email or password"});
      
-          string jwtToken = GenerateToken(admin);
+          string jwtToken = GenerateToken(user);
           // return token
           return Ok(new {token = jwtToken});
      
@@ -41,14 +41,14 @@ public class LoginController: ControllerBase
 
      }
      
-     private string GenerateToken(Admin admin)
+     private string GenerateToken(Account user)
      {
 
           var claims = new[]
           {
-               new Claim(ClaimTypes.Name, admin.Name),
-               new Claim(ClaimTypes.Email, admin.Email),
-               new Claim("Admintype", admin.AdminType)
+               new Claim(ClaimTypes.Name, user.Username),
+               new Claim(ClaimTypes.Email, user.Email),
+               new Claim("AType", user.Atype)
           };
 
 #pragma warning disable CS8604 // Possible null reference argument.

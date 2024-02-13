@@ -135,3 +135,4 @@ C:\Users\Esteban\Desktop\Code\TrelloClone\bin\Debug\net8.0\runtimes\win\lib\net6
 C:\Users\Esteban\Desktop\Code\TrelloClone\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Esteban\Desktop\Code\TrelloClone\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Esteban\Desktop\Code\TrelloClone\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Esteban\Desktop\Code\TrelloClone\obj\Debug\net8.0\TrelloClone.sourcelink.json

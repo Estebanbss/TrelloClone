@@ -35,7 +35,7 @@ public class BoardController: ControllerBase
           return board;
      }
 
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
      [HttpPost("create")]
      public async Task<IActionResult> Create(BoardDtoIn board)
      {
@@ -44,7 +44,7 @@ public class BoardController: ControllerBase
          return CreatedAtAction(nameof(GetById), new { id = newBoard.Id }, newBoard);
      }
 
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
      [HttpPut("update/{id}")]
 
      public async  Task<IActionResult> Update(int id, BoardDtoIn board)
@@ -65,7 +65,7 @@ public class BoardController: ControllerBase
           }
      }
 
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
      [HttpDelete("delete/{id}")]
 
      public async Task<IActionResult> Delete(int id)

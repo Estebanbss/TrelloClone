@@ -35,7 +35,7 @@ public class ListController: ControllerBase
     }
 
      
-    [Authorize(Policy = "SuperAdmin")]
+    [Authorize(Policy = "Authenticated")]
     [HttpPost("create")]
     public async Task<IActionResult> Create(List list)
     {
@@ -45,7 +45,7 @@ public class ListController: ControllerBase
     }
 
     
-    [Authorize(Policy = "SuperAdmin")]
+    [Authorize(Policy = "Authenticated")]
     [HttpPut("update/{id}")]
     public async  Task<IActionResult> Update(int id, List list)
     {
@@ -65,7 +65,7 @@ public class ListController: ControllerBase
         }
     }
  
-    [Authorize(Policy = "SuperAdmin")]
+    [Authorize(Policy = "Authenticated")]
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> Delete(int id)
     {

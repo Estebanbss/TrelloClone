@@ -1,7 +1,7 @@
 
 namespace TrelloClone.Data.DTOs
 {
-    public class AdminDto
+    public class LoginDto
     {
     public string Email { get; set; } = null!;
 

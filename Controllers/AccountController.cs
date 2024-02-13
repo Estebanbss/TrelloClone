@@ -24,7 +24,7 @@ public class AccountController: ControllerBase
          return await _service.GetAll();
      }
 
-
+     
      [HttpGet("get/{id}")]
      public async Task<ActionResult<AccountDtoOut>> GetById(int id)
      {
@@ -36,7 +36,7 @@ public class AccountController: ControllerBase
           return account;
      }
      
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
      [HttpPost("create")]
      public async Task<IActionResult> Create(AccountDtoIn account)
      {
@@ -45,7 +45,8 @@ public class AccountController: ControllerBase
          return CreatedAtAction(nameof(GetById), new { id = newAccount.Id }, newAccount);
      }
 
-     [Authorize(Policy = "SuperAdmin")]
+
+     [Authorize(Policy = "Authenticated")]
      [HttpPut("update/{id}")]
      public async  Task<IActionResult> Update(int id, AccountDtoIn account)
      {
@@ -65,7 +66,7 @@ public class AccountController: ControllerBase
           }
      }
 
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
      [HttpDelete("delete/{id}")]
 
      public async Task<IActionResult> Delete(int id)

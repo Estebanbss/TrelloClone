@@ -18,13 +18,12 @@ public partial class TrelloCloneContext : DbContext
 
     public virtual DbSet<Account> Accounts { get; set; }
 
-    public virtual DbSet<Admin> Admins { get; set; }
-
     public virtual DbSet<Board> Boards { get; set; }
 
     public virtual DbSet<Card> Cards { get; set; }
 
     public virtual DbSet<List> Lists { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,6 +38,10 @@ public partial class TrelloCloneContext : DbContext
             entity.HasIndex(e => e.Email, "UQ__ACCOUNT__A9D10534BE47ADD9").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Atype)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("AType");
             entity.Property(e => e.BoardId).HasColumnName("BOARD_ID");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
@@ -46,6 +49,12 @@ public partial class TrelloCloneContext : DbContext
             entity.Property(e => e.Photo)
                 .HasMaxLength(200)
                 .IsUnicode(false);
+            entity.Property(e => e.Pwd)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.RegDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -53,30 +62,6 @@ public partial class TrelloCloneContext : DbContext
             entity.HasOne(d => d.Board).WithMany(p => p.Accounts)
                 .HasForeignKey(d => d.BoardId)
                 .HasConstraintName("FK__ACCOUNT__BOARD_I__6754599E");
-        });
-
-        modelBuilder.Entity<Admin>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__ADMIN__3214EC2755C5E52B");
-
-            entity.ToTable("ADMIN");
-
-            entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.AdminType)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Email)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Name)
-                .HasMaxLength(200)
-                .IsUnicode(false);
-            entity.Property(e => e.Pwd)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.RegDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Board>(entity =>

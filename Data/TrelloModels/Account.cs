@@ -11,9 +11,15 @@ public partial class Account
 
     public string? Photo { get; set; }
 
-    public string? Email { get; set; }
+    public string Email { get; set; } = null!;
 
     public int? BoardId { get; set; }
+
+    public string Pwd { get; set; } = null!;
+
+    public string Atype { get; set; } = null!;
+
+    public DateTime? RegDate { get; set; }
 
     public virtual Board? Board { get; set; }
 

@@ -38,7 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization(options =>
 {
-     options.AddPolicy("SuperAdmin", policy => policy.RequireClaim("Admintype", "SuperAdmin"));
+     options.AddPolicy("Authenticated", policy => policy.RequireClaim("Atype"));
 });
 
 var app = builder.Build();

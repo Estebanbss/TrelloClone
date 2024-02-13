@@ -23,6 +23,7 @@ public class AccountService
                 Username = a.Username,
                 Email = a.Email,
                 Photo = a.Photo,
+                Atype = a.Atype
          }).ToListAsync();
      }
 
@@ -34,6 +35,7 @@ public class AccountService
                 Username = a.Username,
                 Email = a.Email,
                 Photo = a.Photo,
+                Atype = a.Atype
          }).SingleOrDefaultAsync();
      }
 
@@ -49,6 +51,9 @@ public class AccountService
           newAccount.Username = newaccountDTO.Username;
           newAccount.Email = newaccountDTO.Email;
           newAccount.Photo = newaccountDTO.Photo;
+          newAccount.Pwd = newaccountDTO.Pwd;
+          newAccount.Atype = newaccountDTO.Atype;
+     
 
          _context.Accounts.Add(newAccount);
          await _context.SaveChangesAsync();
@@ -65,6 +70,8 @@ public class AccountService
               existingAccount.Username = account.Username;
               existingAccount.Email = account.Email;
               existingAccount.Photo = account.Photo;
+              existingAccount.Pwd = account.Pwd;
+              existingAccount.Atype = account.Atype;
               
               await _context.SaveChangesAsync();
           }

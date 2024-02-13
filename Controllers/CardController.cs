@@ -35,7 +35,7 @@ public class CardController: ControllerBase
     }
 
      
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
     [HttpPost("create")]
     public async Task<IActionResult> Create(Card card)
     {
@@ -44,7 +44,7 @@ public class CardController: ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = newCard.Id }, newCard);
     }
      
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
     [HttpPut("update/{id}")]
     public async  Task<IActionResult> Update(int id, Card card)
     {
@@ -65,7 +65,7 @@ public class CardController: ControllerBase
     }
 
 
-     [Authorize(Policy = "SuperAdmin")]
+     [Authorize(Policy = "Authenticated")]
      [HttpDelete("delete/{id}")]
      public async Task<IActionResult> Delete(int id)
      {
