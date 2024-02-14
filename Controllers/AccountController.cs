@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TrelloClone.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class AccountController: ControllerBase
@@ -36,7 +35,7 @@ public class AccountController: ControllerBase
           return account;
      }
      
-     [Authorize(Policy = "Authenticated")]
+
      [HttpPost("create")]
      public async Task<IActionResult> Create(AccountDtoIn account)
      {
