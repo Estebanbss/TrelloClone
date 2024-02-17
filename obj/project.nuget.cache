@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+NfQD2lnkEmHT9P5Jey1HG88cMkaizlz0haYKc1IqFfy5eWKLLAoilM66MGUM9HznXV7CRfKKAuBKW0ZH81iMw==",
+  "dgSpecHash": "xHAv9BZ8wroHixRb4gRcoH5JT7vrVHltvo/pztZhOoM4zbF6rJqkbZycNWpBtDkj/0trf+2eEhkqPUC2ULnpVQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Esteban\\Desktop\\Code\\TrelloClone\\TrelloClone.csproj",
+  "projectFilePath": "C:\\Users\\Esteban\\Desktop\\Code\\trello-clone-api\\TrelloClone.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Esteban\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Esteban\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

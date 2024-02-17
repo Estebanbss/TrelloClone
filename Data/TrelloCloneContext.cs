@@ -23,8 +23,6 @@ public partial class TrelloCloneContext : DbContext
     public virtual DbSet<Card> Cards { get; set; }
 
     public virtual DbSet<List> Lists { get; set; }
-
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>

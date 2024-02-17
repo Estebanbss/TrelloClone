@@ -1,4 +1,6 @@
 
+using TrelloClone.Data.TrelloModels;
+
 namespace TrelloClone.Data.DTOs
 {
     public class AccountDtoOut
@@ -8,6 +10,9 @@ namespace TrelloClone.Data.DTOs
         public string? Photo { get; set; }
         public string? Email { get; set; } = null!;
         public string Atype { get; set; } = null!;
+        public DateTime RegDate { get; set; }
+        public virtual ICollection<Board> Boards { get; set; } = new List<Board>();
+
         
     }
 }
