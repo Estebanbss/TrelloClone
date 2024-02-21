@@ -5,7 +5,7 @@ using TrelloClone.Data.DTOs;
 using Microsoft.AspNetCore.Authorization;
 
 namespace TrelloClone.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class AccountController: ControllerBase
@@ -16,7 +16,8 @@ public class AccountController: ControllerBase
      {
          _service = account;
      }
-
+     
+     [Authorize(Policy = "Authenticated")]
      [HttpGet("all")]
      public async Task<IEnumerable<AccountDtoOut>> Get()
      {
@@ -24,6 +25,7 @@ public class AccountController: ControllerBase
      }
 
      
+     [Authorize(Policy = "Authenticated")]
      [HttpGet("get/{id}")]
      public async Task<ActionResult<AccountDtoOut>> GetById(int id)
      {
@@ -35,7 +37,8 @@ public class AccountController: ControllerBase
           return account;
      }
      
-
+     
+     [Authorize(Policy = "Authenticated")]
      [HttpPost("create")]
      public async Task<IActionResult> Create(AccountDtoIn account)
      {

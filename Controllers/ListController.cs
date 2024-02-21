@@ -16,13 +16,15 @@ public class ListController: ControllerBase
     {
         _service = list;
     }
-
+     
+     [Authorize(Policy = "Authenticated")]
     [HttpGet("all")]
     public async Task<IEnumerable<List>> Get()
     {
         return await _service.GetAll();
     }
-
+     
+     [Authorize(Policy = "Authenticated")]
     [HttpGet("{id}")]
     public async Task<ActionResult<List>> GetById(int id)
     {

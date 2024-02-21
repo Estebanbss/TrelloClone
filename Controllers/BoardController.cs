@@ -17,13 +17,15 @@ public class BoardController: ControllerBase
     {
         _service = board;
     }
-
+     
+    [Authorize(Policy = "Authenticated")]
     [HttpGet("all")]
     public async Task<IEnumerable<Board>> Get()
     {
         return await _service.GetAll();
     }
-
+     
+     [Authorize(Policy = "Authenticated")]
      [HttpGet("get/{id}")]
      public async Task<ActionResult<Board>> GetById(int id)
      {

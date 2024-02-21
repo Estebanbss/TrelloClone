@@ -16,13 +16,15 @@ public class CardController: ControllerBase
     {
         _service = card;
     }
-
+    
+    [Authorize(Policy = "Authenticated")]
     [HttpGet("all")]
     public async Task<IEnumerable<Card>> Get()
     {
         return await _service.GetAll();
     }
-
+    
+    [Authorize(Policy = "Authenticated")]
     [HttpGet("get/{id}")]
     public async Task<ActionResult<Card>> GetById(int id)
     {
@@ -35,7 +37,7 @@ public class CardController: ControllerBase
     }
 
      
-     [Authorize(Policy = "Authenticated")]
+    [Authorize(Policy = "Authenticated")]
     [HttpPost("create")]
     public async Task<IActionResult> Create(Card card)
     {
@@ -44,7 +46,7 @@ public class CardController: ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = newCard.Id }, newCard);
     }
      
-     [Authorize(Policy = "Authenticated")]
+    [Authorize(Policy = "Authenticated")]
     [HttpPut("update/{id}")]
     public async  Task<IActionResult> Update(int id, Card card)
     {
