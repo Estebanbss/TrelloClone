@@ -47,7 +47,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c=>
+{
+     c.SwaggerEndpoint("/myApi/swagger/v1/swagger.json", "V1 Docs");
+
+});
 }
 
 app.UseHttpsRedirection();

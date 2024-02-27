@@ -39,6 +39,19 @@ public class AccountService
          }).SingleOrDefaultAsync();
      }
 
+     public async Task<AccountDtoOut?> GetDtoByEmail(string email)
+     {
+         return await _context.Accounts.Where(a => a.Email == email).Select(a => new AccountDtoOut
+         {
+                Id = a.Id,
+                Username = a.Username,
+                Email = a.Email,
+                Photo = a.Photo,
+                Atype = a.Atype
+         }).SingleOrDefaultAsync();
+     }
+     
+
      public async Task<Account?> GetById(int id)
      {
          return await _context.Accounts.FindAsync(id);
