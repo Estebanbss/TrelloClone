@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrelloClone")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1430f1a4ef5d37b71ef382d27c81d79d4be13fd4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bc32569c971c8d532a00aaa791e94bf14727743")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrelloClone")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrelloClone")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

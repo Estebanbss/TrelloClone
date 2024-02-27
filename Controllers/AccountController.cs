@@ -36,6 +36,18 @@ public class AccountController: ControllerBase
 
           return account;
      }
+
+     [Authorize(Policy = "Authenticated")]
+     [HttpGet("getbyemail/{email}")]
+     public async Task<ActionResult<AccountDtoOut>> GetByEmail(string email)
+     {
+         var account = await _service.GetDtoByEmail(email);
+
+         if (account == null)
+             return AccountNotFoundByEmail(email);
+
+          return account;
+     }
      
      
      [Authorize(Policy = "Authenticated")]
@@ -89,5 +101,10 @@ public class AccountController: ControllerBase
      public NotFoundObjectResult AccountNotFound(int id)
      {
          return NotFound(new {message=$"Account not found = {id} does not exist"});
+     }
+
+     public NotFoundObjectResult AccountNotFoundByEmail(string email)
+     {
+         return NotFound(new {message=$"Account not found = {email} does not exist"});
      }
 }
