@@ -37,6 +37,7 @@ public class AccountController: ControllerBase
           return account;
      }
 
+
      [Authorize(Policy = "Authenticated")]
      [HttpGet("getbyemail/{email}")]
      public async Task<ActionResult<AccountDtoOut>> GetByEmail(string email)

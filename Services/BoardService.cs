@@ -12,16 +12,44 @@ public class BoardService {
           _context = context;
      }
 
-          public async Task<IEnumerable<Board>> GetAll()
+          public async Task<IEnumerable<BoardDtoOut>> GetAll()
      {
-         return await _context.Boards.ToListAsync();
+         return await _context.Boards.Select(
+          b => new BoardDtoOut
+          {
+              Id = b.Id,
+              Name = b.Name,
+              AccountId = b.AccountId
+          }).ToListAsync();
      }
+
+     public async Task<BoardDtoOut?> GetDtoById(int id)
+     {
+         return await _context.Boards.Where(b => b.Id == id).Select(
+          b => new BoardDtoOut
+          {
+              Id = b.Id,
+              Name = b.Name,
+              AccountId = b.AccountId
+          }).SingleOrDefaultAsync();
+     }
+
+     public async Task<IEnumerable<BoardDtoOut>> GetByAccountId(int accountId)
+     {
+           return await _context.Boards.Where(b => b.AccountId == accountId).Select(
+            b => new BoardDtoOut
+            {
+                 Id = b.Id,
+                 Name = b.Name,
+                 AccountId = b.AccountId
+            }).ToListAsync();
+      }
 
      public async Task<Board?> GetById(int id)
      {
          return await _context.Boards.FindAsync(id);
      }
-
+     
      public async Task<Board> Create(BoardDtoIn newBoardDTO)
      {
            var newBoard = new Board();

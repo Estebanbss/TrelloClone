@@ -20,21 +20,33 @@ public class BoardController: ControllerBase
      
     [Authorize(Policy = "Authenticated")]
     [HttpGet("all")]
-    public async Task<IEnumerable<Board>> Get()
+    public async Task<IEnumerable<BoardDtoOut>> Get()
     {
         return await _service.GetAll();
     }
      
      [Authorize(Policy = "Authenticated")]
      [HttpGet("get/{id}")]
-     public async Task<ActionResult<Board>> GetById(int id)
+     public async Task<ActionResult<BoardDtoOut>> GetById(int id)
      {
-         var board = await _service.GetById(id);
+         var board = await _service.GetDtoById(id);
 
          if (board == null)
              return BoardNotFound(id);
 
           return board;
+     }
+
+     [Authorize(Policy = "Authenticated")]
+     [HttpGet("getbyAccount/{id}")]
+     public async Task<ActionResult<IEnumerable<BoardDtoOut>>> GetByAccountId(int id)
+     {
+         var boards = await _service.GetByAccountId(id);
+
+         if (boards.Count() == 0)
+             return BoardsNotFound(id);
+
+          return boards.ToList();
      }
 
      [Authorize(Policy = "Authenticated")]
@@ -85,10 +97,14 @@ public class BoardController: ControllerBase
          }
      }
 
+
      private ActionResult BoardNotFound(int id)
      {
          return NotFound(new {message=$"Board with id = {id} not found"});
      }
-
+     private ActionResult BoardsNotFound(int id)
+     {
+         return NotFound(new {message=$"There are no boards for account with id = {id}"});
+     }
 
 }

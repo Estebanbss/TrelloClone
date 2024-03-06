@@ -1,14 +1,12 @@
-
-
 namespace TrelloClone.Data.DTOs
 {
-    public class BoardDtoOut
-    {
+     public class ListDtoIn
+     {
           public int Id { get; set; }
+
           public string Name { get; set; } = null!;
 
-          public int AccountId { get; set; }
-          
-        
-    }
+          public int BoardId { get; set; }
+
+     }
 }

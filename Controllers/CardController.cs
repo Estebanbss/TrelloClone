@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using TrelloClone.Services;
 using TrelloClone.Data.TrelloModels;
 using Microsoft.AspNetCore.Authorization;
+using TrelloClone.Data.DTOs;
 
 namespace TrelloClone.Controllers;
 
@@ -19,27 +20,39 @@ public class CardController: ControllerBase
     
     [Authorize(Policy = "Authenticated")]
     [HttpGet("all")]
-    public async Task<IEnumerable<Card>> Get()
+    public async Task<IEnumerable<CardDtoOut>> Get()
     {
-        return await _service.GetAll();
+            return await _service.GetAll();
     }
     
     [Authorize(Policy = "Authenticated")]
     [HttpGet("get/{id}")]
-    public async Task<ActionResult<Card>> GetById(int id)
-    {
-        var card = await _service.GetById(id);
+    public async Task<ActionResult<CardDtoOut>> GetById(int id)
+     {
+          var card = await _service.GetDtoById(id);
+     
+          if (card == null)
+               return CardNotFound(id);
+     
+          return card;
+     }
 
-        if (card == null)
-            return CardNotFound(id);
+     [Authorize(Policy = "Authenticated")]
+     [HttpGet("getbyList/{id}")]
+     public async Task<ActionResult<IEnumerable<CardDtoOut>>> GetByListId(int id)
+     {
+         var cards = await _service.GetByListId(id);
 
-        return card;
-    }
+         if (cards.Count() == 0)
+             return CardsNotFound(id);
+
+         return cards.ToList();
+     }
 
      
     [Authorize(Policy = "Authenticated")]
     [HttpPost("create")]
-    public async Task<IActionResult> Create(Card card)
+    public async Task<IActionResult> Create(CardDtoIn card)
     {
         var newCard = await _service.Create(card);
 
@@ -48,23 +61,24 @@ public class CardController: ControllerBase
      
     [Authorize(Policy = "Authenticated")]
     [HttpPut("update/{id}")]
-    public async  Task<IActionResult> Update(int id, Card card)
-    {
-        if (id != card.Id)
+    public async  Task<IActionResult> Update(int id, CardDtoIn card){
+
+        if(id != card.Id)
+        {
             return BadRequest(new {message=$"the id = {id} does not match the card id {card.Id} in the request body"});
+        }
+        var existingCard = await _service.GetById(id);
 
-        var cardToUpdate = await _service.GetById(id);
-
-        if (cardToUpdate is not null)
+        if (existingCard is not null)
         {
             await _service.Update(id, card);
-            return NoContent(); 
+            return NoContent();
         }
         else
         {
             return CardNotFound(id);
         }
-    }
+     }
 
 
      [Authorize(Policy = "Authenticated")]
@@ -86,5 +100,9 @@ public class CardController: ControllerBase
      private ActionResult CardNotFound(int id)
      {
           return NotFound(new {message=$"Card with id {id} not found"});
+     }
+     private ActionResult CardsNotFound(int id)
+     {
+          return NotFound(new {message=$"No cards found for list with id {id}"});
      }
 }
