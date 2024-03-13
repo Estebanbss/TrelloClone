@@ -13,8 +13,9 @@ namespace TrelloClone.Data.DTOs
           public string? Labels { get; set; }
 
           public string? Cover { get; set; }
-
           
            public int ListId { get; set; }
+
+          public int? Pos { get; set; }
      }
 }

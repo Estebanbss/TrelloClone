@@ -19,7 +19,8 @@ public class BoardService {
           {
               Id = b.Id,
               Name = b.Name,
-              AccountId = b.AccountId
+              AccountId = b.AccountId,
+              Ph = b.Ph
           }).ToListAsync();
      }
 
@@ -30,7 +31,8 @@ public class BoardService {
           {
               Id = b.Id,
               Name = b.Name,
-              AccountId = b.AccountId
+              AccountId = b.AccountId,
+              Ph = b.Ph
           }).SingleOrDefaultAsync();
      }
 
@@ -41,7 +43,8 @@ public class BoardService {
             {
                  Id = b.Id,
                  Name = b.Name,
-                 AccountId = b.AccountId
+                 AccountId = b.AccountId,
+                 Ph = b.Ph
             }).ToListAsync();
       }
 
@@ -56,7 +59,7 @@ public class BoardService {
 
           newBoard.Name = newBoardDTO.Name;
           newBoard.AccountId = newBoardDTO.AccountId;
-          
+          newBoard.Ph = newBoardDTO.Ph;
          _context.Boards.Add(newBoard);
          await _context.SaveChangesAsync();
 
@@ -69,8 +72,9 @@ public class BoardService {
 
           if (existingBoard is not null)
           {
+              existingBoard.Id = board.Id;
               existingBoard.Name = board.Name;
-     
+              existingBoard.Ph = board.Ph;
               
               await _context.SaveChangesAsync();
           }

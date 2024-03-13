@@ -17,5 +17,7 @@ namespace TrelloClone.Data.DTOs
           public DateTime Date { get; set; }
 
           public int ListId { get; set; }
+
+          public int? Pos { get; set; }
      }
 }

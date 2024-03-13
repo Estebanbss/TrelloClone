@@ -21,5 +21,7 @@ public partial class Card
 
     public int ListId { get; set; }
 
+    public int? Pos { get; set; }
+
     public virtual List List { get; set; } = null!;
 }

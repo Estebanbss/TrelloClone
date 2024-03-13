@@ -8,6 +8,8 @@ namespace TrelloClone.Data.DTOs
 
           public int BoardId { get; set; }
 
+          public int? Pos { get; set; }
+
           
 
      }

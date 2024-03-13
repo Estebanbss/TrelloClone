@@ -25,7 +25,8 @@ namespace TrelloClone.Services;
                Comment = c.Comment,
                Labels = c.Labels,
                Cover = c.Cover,
-               ListId = c.ListId
+               ListId = c.ListId,
+               Pos = c.Pos
            }).ToListAsync();
       }
 
@@ -45,7 +46,8 @@ namespace TrelloClone.Services;
                          Comment = c.Comment,
                          Labels = c.Labels,
                          Cover = c.Cover,
-                         ListId = c.ListId
+                         ListId = c.ListId,
+                         Pos = c.Pos
                     }).SingleOrDefaultAsync();
           }
 
@@ -60,7 +62,8 @@ namespace TrelloClone.Services;
                          Comment = c.Comment,
                          Labels = c.Labels,
                          Cover = c.Cover,
-                         ListId = c.ListId
+                         ListId = c.ListId,
+                         Pos = c.Pos
                     }).ToListAsync();
           }
 
@@ -74,6 +77,7 @@ namespace TrelloClone.Services;
                newCard.Labels = newCardDTO.Labels;
                newCard.Cover = newCardDTO.Cover;
                newCard.ListId = newCardDTO.ListId;
+               newCard.Pos = newCardDTO.Pos;
 
                _context.Cards.Add(newCard);
                await _context.SaveChangesAsync();
@@ -87,12 +91,14 @@ namespace TrelloClone.Services;
 
                if (existingCard is not null)
                {
+                    existingCard.Id = card.Id;
                     existingCard.Title = card.Title;
                     existingCard.Description = card.Description;
                     existingCard.Comment = card.Comment;
                     existingCard.Labels = card.Labels;
                     existingCard.Cover = card.Cover;
                     existingCard.ListId = card.ListId;
+                    existingCard.Pos = card.Pos;
 
                     await _context.SaveChangesAsync();
                }

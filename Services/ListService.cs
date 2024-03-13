@@ -20,7 +20,8 @@ public class ListService
             {
                  Id = l.Id,
                  Name = l.Name,
-                 BoardId = l.BoardId
+                 BoardId = l.BoardId,
+                 Pos = l.Pos
             }).ToListAsync();
      }
 
@@ -36,7 +37,8 @@ public class ListService
                {
                     Id = l.Id,
                     Name = l.Name,
-                    BoardId = l.BoardId
+                    BoardId = l.BoardId,
+                    Pos = l.Pos
                }).SingleOrDefaultAsync();
      }
 
@@ -47,7 +49,8 @@ public class ListService
                {
                     Id = l.Id,
                     Name = l.Name,
-                    BoardId = l.BoardId
+                    BoardId = l.BoardId,
+                    Pos = l.Pos
                }).ToListAsync();
      }
 
@@ -57,7 +60,7 @@ public class ListService
 
           newList.Name = newListDTO.Name;
           newList.BoardId = newListDTO.BoardId;
-
+          newList.Pos = newListDTO.Pos;
           _context.Lists.Add(newList);
           await _context.SaveChangesAsync();
 
@@ -70,8 +73,10 @@ public class ListService
 
           if (existingList is not null)
           {
+               existingList.Id = list.Id;
                existingList.Name = list.Name;
                existingList.BoardId = list.BoardId;
+               existingList.Pos = list.Pos;
                await _context.SaveChangesAsync();
           }
      }

@@ -23,6 +23,11 @@ public partial class TrelloCloneContext : DbContext
     public virtual DbSet<Card> Cards { get; set; }
 
     public virtual DbSet<List> Lists { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=TrelloClone;Trusted_connection=true;TrustServerCertificate=True");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>
@@ -74,6 +79,9 @@ public partial class TrelloCloneContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("NAME");
+            entity.Property(e => e.Ph)
+                .HasMaxLength(200)
+                .IsUnicode(false);
 
             entity.HasOne(d => d.Account).WithMany(p => p.Boards)
                 .HasForeignKey(d => d.AccountId)

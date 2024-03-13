@@ -9,6 +9,7 @@ namespace TrelloClone.Data.DTOs
 
           public int AccountId { get; set; }
           
+          public string? Ph { get; set; }
         
     }
 }
