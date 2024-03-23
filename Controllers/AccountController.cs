@@ -52,6 +52,7 @@ public class AccountController: ControllerBase
      
      
      [HttpPost("create")]
+     [AllowAnonymous]
      public async Task<IActionResult> Create(AccountDtoIn account)
      {
           var newAccount = await _service.Create(account);
