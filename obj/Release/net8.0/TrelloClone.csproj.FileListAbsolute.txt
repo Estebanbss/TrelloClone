@@ -274,3 +274,7 @@ C:\Users\Esteban\Desktop\Code\trello-clone-api\obj\Release\net8.0\refint\TrelloC
 C:\Users\Esteban\Desktop\Code\trello-clone-api\obj\Release\net8.0\TrelloClone.pdb
 C:\Users\Esteban\Desktop\Code\trello-clone-api\obj\Release\net8.0\TrelloClone.genruntimeconfig.cache
 C:\Users\Esteban\Desktop\Code\trello-clone-api\obj\Release\net8.0\ref\TrelloClone.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\System.Net.Http.Formatting.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\System.Web.Http.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\Newtonsoft.Json.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\Newtonsoft.Json.Bson.dll

@@ -12,11 +12,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy  =>
                       {
-                          policy.WithOrigins("https://www.trelloclone.somee.com/",
-                                              "https://www.trelloclone.somee.com/",
-                                              "https://estebanbss.github.io/"
-                                              ).AllowAnyHeader()
-                                             .AllowAnyMethod();
+                              policy.WithOrigins("https://www.trelloclone.somee.com",
+                         "https://estebanbss.github.io")
+                                                       .AllowAnyHeader()
+                                                       .AllowAnyMethod();
                       });
 });
 // Add services to the container.

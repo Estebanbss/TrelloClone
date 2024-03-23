@@ -6,6 +6,8 @@ C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Trello
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\TrelloClone.pdb
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Azure.Core.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Azure.Identity.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\System.Net.Http.Formatting.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\System.Web.Http.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Microsoft.Data.SqlClient.dll
@@ -24,6 +26,8 @@ C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Micros
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Microsoft.OpenApi.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Microsoft.SqlServer.Server.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Microsoft.Win32.SystemEvents.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Newtonsoft.Json.dll
+C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Newtonsoft.Json.Bson.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Esteban\Desktop\Code\trello-clone-api\bin\Release\net8.0\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
