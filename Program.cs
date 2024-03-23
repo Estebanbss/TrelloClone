@@ -3,9 +3,19 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using TrelloClone.Data;
 using TrelloClone.Services;
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.WithOrigins("https://www.trelloclone.somee.com/",
+                                              "https://www.trelloclone.somee.com/");
+                      });
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -54,7 +64,10 @@ if (app.Environment.IsDevelopment())
 });
 }
 
+
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 
