@@ -13,7 +13,9 @@ builder.Services.AddCors(options =>
                       policy  =>
                       {
                           policy.WithOrigins("https://www.trelloclone.somee.com/",
-                                              "https://www.trelloclone.somee.com/");
+                                              "https://www.trelloclone.somee.com/",
+                                              "https://estebanbss.github.io/"
+                                              );
                       });
 });
 // Add services to the container.
