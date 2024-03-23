@@ -51,7 +51,6 @@ public class AccountController: ControllerBase
      }
      
      
-     [Authorize(Policy = "Authenticated")]
      [HttpPost("create")]
      public async Task<IActionResult> Create(AccountDtoIn account)
      {
