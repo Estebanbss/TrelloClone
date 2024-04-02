@@ -95,7 +95,7 @@ public class AccountService
          var accountToDelete = await GetById(id);
 
          if (accountToDelete is not null)
-         {
+         {     
              _context.Accounts.Remove(accountToDelete);
              await _context.SaveChangesAsync();
          }

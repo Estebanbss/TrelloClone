@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using TrelloClone.Services;
-using TrelloClone.Data.TrelloModels;
 using TrelloClone.Data.DTOs;
 using Microsoft.AspNetCore.Authorization;
 
