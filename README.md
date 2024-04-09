@@ -1,83 +1,125 @@
 # Trello Clone API
 
-## Descripción:
+## Description:
 
-Esta API RESTful te permite gestionar un clon de Trello utilizando C# en .NET 8 y una base de datos. La API está dividida en controladores, cada uno de los cuales se encarga de una entidad específica (por ejemplo, cuentas, tableros, tarjetas, listas). La lógica de negocio está separada en servicios para evitar la manipulación directa del contexto de la base de datos. También se utilizan DTOs para transferir datos entre las diferentes capas de la aplicación.
+This RESTful API allows you to manage a Trello clone using C# in .NET 8 and a database. The API is divided into controllers, each of which handles a specific entity (e.g., accounts, boards, cards, lists). Business logic is separated into services to avoid direct manipulation of the database context. DTOs are also used to transfer data between different layers of the application.
 
-## Tecnologías:
+## Technologies:
 
 - ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
 - ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
-- Entity Framework Core
 - ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
+- Entity Framework Core
+  
+## Database Structure:
 
-## Estructura de la base de datos:
+### The database consists of the following tables:
 
-### La base de datos se compone de las siguientes tablas:
+- Account: Stores information about application users.
+- Board: Stores information about Trello boards.
+- List: Stores information about task lists within a board.
+- Card: Stores information about task cards within a list.
 
-- Cuenta: Almacena información sobre los usuarios de la aplicación.
-- Tablero: Almacena información sobre los tableros de Trello.
-- Lista: Almacena información sobre las listas de tareas dentro de un tablero.
-- Tarjeta: Almacena información sobre las tarjetas de tareas dentro de una lista.
+### Controllers:
 
-### Controladores:
-
-- AccountController: Controla las operaciones relacionadas con las cuentas de usuario.
-- BoardController: Controla las operaciones relacionadas con los tableros.
-- CardController: Controla las operaciones relacionadas con las tarjetas.
-- ListController: Controla las operaciones relacionadas con las listas.
-- LoginController: Controla el proceso de inicio de sesión.
+- AccountController: Controls operations related to user accounts.
+- BoardController: Controls operations related to boards.
+- CardController: Controls operations related to cards.
+- ListController: Controls operations related to lists.
+- LoginController: Controls the login process.
 
 ### DTOs:
 
-- AccountDtoIn: Se utiliza para recibir datos de la API para crear o actualizar cuentas.
-- AccountDtoOut: Se utiliza para enviar datos de la API sobre las cuentas.
-- BoardDtoIn: Se utiliza para recibir datos de la API para crear o actualizar tableros.
-- BoardDtoOut: Se utiliza para enviar datos de la API sobre los tableros.
-- LoginDto: Se utiliza para recibir datos de la API para el proceso de inicio de sesión.
+- AccountDtoIn: Used to receive data from the API to create or update accounts.
+- AccountDtoOut: Used to send data from the API about accounts.
+- BoardDtoIn: Used to receive data from the API to create or update boards.
+- BoardDtoOut: Used to send data from the API about boards.
+- LoginDto: Used to receive data from the API for the login process.
 
-### Servicios:
+### Services:
 
-- AccountService: Contiene la lógica de negocio para las operaciones relacionadas con las cuentas.
-- BoardService: Contiene la lógica de negocio para las operaciones relacionadas con los tableros.
-- CardService: Contiene la lógica de negocio para las operaciones relacionadas con las tarjetas.
-- ListService: Contiene la lógica de negocio para las operaciones relacionadas con las listas.
+- AccountService: Contains business logic for operations related to accounts.
+- BoardService: Contains business logic for operations related to boards.
+- CardService: Contains business logic for operations related to cards.
+- ListService: Contains business logic for operations related to lists.
 
-## Uso de la API:
+## Using the API:
 
-Para usar la API, puedes utilizar cualquier herramienta que te permita realizar solicitudes HTTP. Puedes encontrar más información sobre cómo usar la API en la documentación Swagger.
+To use the API, you can use any tool that allows you to make HTTP requests. You can find more information on how to use the API in the Swagger documentation.
 
-## Documentación Swagger:
+## Endpoints:
 
-La documentación Swagger está disponible en la siguiente URL:
+### Account Controller:
+
+- **GET** `/api/account/all`
+- **GET** `/api/account/get/{id}`
+- **GET** `/api/account/getbyemail/{email}`
+- **POST** `/api/account/create`
+- **PUT** `/api/account/update/{id}`
+- **DELETE** `/api/account/delete/{id}`
+
+### Board Controller:
+
+- **GET** `/api/board/all`
+- **GET** `/api/board/get/{id}`
+- **GET** `/api/board/getbyAccount/{id}`
+- **POST** `/api/board/create`
+- **PUT** `/api/board/update/{id}`
+- **DELETE** `/api/board/delete/{id}`
+
+### Card Controller:
+
+- **GET** `/api/card/all`
+- **GET** `/api/card/get/{id}`
+- **GET** `/api/card/getbyList/{id}`
+- **POST** `/api/card/create`
+- **PUT** `/api/card/update/{id}`
+- **DELETE** `/api/card/delete/{id}`
+
+### List Controller:
+
+- **GET** `/api/list/all`
+- **GET** `/api/list/{id}`
+- **GET** `/api/list/getbyboardid/{boardId}`
+- **POST** `/api/list/create`
+- **PUT** `/api/list/update/{id}`
+- **DELETE** `/api/list/delete/{id}`
+
+### Login Controller:
+
+- **POST** `/api/login/authenticate`
+
+## Swagger Documentation:
+
+Swagger documentation is available at the following URL:
 
 https://localhost:5001/swagger/index.html
 
-### Inicio rápido:
+### Quick Start:
 
-1. Clona este repositorio en tu máquina local.
-2. Restaura las dependencias con dotnet restore.
-3. Ejecuta la aplicación con dotnet run.
-4. Abre la documentación Swagger en tu navegador web.
-5. Explora las diferentes operaciones disponibles en la API.
-6. Contribuciones:
+1. Clone this repository to your local machine.
+2. Restore dependencies with dotnet restore.
+3. Run the application with dotnet run.
+4. Open the Swagger documentation in your web browser.
+5. Explore the different operations available in the API.
+6. Contributions:
 
-## Se agradecen las contribuciones a este proyecto. Si deseas contribuir, puedes hacerlo siguiendo las siguientes pautas:
+## Contributions:
 
-- Crea una bifurcación de este repositorio.
-- Implementa tu cambio en una nueva rama.
-- Envía una solicitud de extracción a la rama principal.
+Contributions to this project are appreciated. If you wish to contribute, you can do so by following these guidelines:
 
+- Fork this repository.
+- Implement your change in a new branch.
+- Submit a pull request to the main branch.
 
-### Contacto:
+### Contact:
 
-Si tienes alguna pregunta o comentario, puedes ponerte en contacto conmigo a través de la siguiente dirección de correo electrónico:
+If you have any questions or comments, you can contact me via the following email address:
 
-juanesbs2003@homail.com
+juanesbs2003@hotmail.com
 
+## Additional Information:
 
-## Información adicional:
-
-Este proyecto se puede utilizar como punto de partida para crear tu propia aplicación Trello.
-Puedes ampliar la API para agregar nuevas funcionalidades.
-Espero que este proyecto te sea útil.
+- This project can be used as a starting point to create your own Trello application.
+- You can extend the API to add new functionalities.
+- I hope this project is helpful to you.
